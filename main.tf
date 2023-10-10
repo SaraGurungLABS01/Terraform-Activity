@@ -1,7 +1,7 @@
 # Configure AWS provider
 provider "aws" {
-  access_key = "YOUR_ACCESS_KEY_HERE"
-  secret_key = "YOUR_SECRET_KEY_HERE"
+  access_key = "AKIA4Q45KB4O7NYSEF7M"
+  secret_key = "fW9/gBi79GFWdlHQR5Kgl6P+fl1kKs4/7T5EgL45"
   region     = "us-east-1"
 }
 
@@ -41,12 +41,12 @@ output "jenkins_instance_public_ip" {
 
 
 # Configure VPC
-resource "aws_vpc" "main" {
-  cidr_block = "0.0.0.0/16"  # Replace with your VPC's CIDR block
+#resource "aws_vpc" "main" {
+  #cidr_block = "0.0.0.0/16"  # Replace with your VPC's CIDR block
 vpc_id = vpc-073ade3ebea048f2c
 
   tags = {
-    Name = "project-vpc"
+    Name = ""
   }
 }
 
