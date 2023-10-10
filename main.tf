@@ -41,8 +41,9 @@ output "jenkins_instance_public_ip" {
 
 
 # Configure VPC
-resource "aws_vpc" "project_vpc" {
-  cidr_block = "YOUR_VPC_CIDR_BLOCK_HERE"  # Replace with your VPC's CIDR block
+resource "aws_vpc" "main" {
+  cidr_block = "0.0.0.0/16"  # Replace with your VPC's CIDR block
+vpc_id = vpc-073ade3ebea048f2c
 
   tags = {
     Name = "project-vpc"
