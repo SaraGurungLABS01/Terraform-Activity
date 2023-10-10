@@ -5,11 +5,11 @@ provider "aws" {
   region     = "us-east-1"
 }
 
-# Create an EC2 instance with Jenkins installation script from a GitHub repo
-resource "aws_instance" "jenkins_instance" {
+# Create an EC2 instance with Jenkins installed
+resource "aws_instance" "web_server01" {
   ami           = "ami-053b0d53c279acc90"
   instance_type = "t2.micro"
-  subnet_id     = "YOUR_SUBNET_ID_HERE"  # Replace with the ID of the existing public subnet in your VPC
+  subnet_id     = "subnet-07eaa879b5e96a6b6"  
 
   user_data = <<-EOF
     #!/bin/bash
@@ -35,29 +35,18 @@ resource "aws_instance" "jenkins_instance" {
 }
 
 # Output the public IP address of the EC2 instance
-output "jenkins_instance_public_ip" {
-  value = aws_instance.jenkins_instance.public_ip
+output "instance_ip" {
+  value = aws_instance.web_server01.public_ip
 }
 
 
 # Configure VPC
 #resource "aws_vpc" "main" {
   #cidr_block = "0.0.0.0/16"  # Replace with your VPC's CIDR block
-vpc_id = vpc-073ade3ebea048f2c
+#vpc_id = vpc-073ade3ebea048f2c
 
-  tags = {
-    Name = ""
-  }
-}
-
-# Configure subnet
-resource "aws_subnet" "my_pub_subnet" {
-  vpc_id            = aws_vpc.project_vpc.id
-  cidr_block        = "YOUR_SUBNET_CIDR_BLOCK_HERE"  # Replace with your subnet's CIDR block
-  availability_zone = "us-east-1a"
-
-  tags = {
-    Name = "project-subnet-public1-us-east-1a"
+  #tags = {
+    #Name = ""
   }
 }
 
