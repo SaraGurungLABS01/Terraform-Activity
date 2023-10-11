@@ -14,10 +14,9 @@ resource "aws_instance" "web_server01" {
   ami           = var.ami
   instance_type = var.instance_type
   subnet_id     = var.subnet_id
-  security_groups = var.security_groups
   key_name = var.key_name
   associate_public_ip_address = true
-  user_data = "${file("install_jenkins.sh")}"
+  user_data = "${file("deploy.sh")}"
 
     tags = {
     "Name": var.tags
